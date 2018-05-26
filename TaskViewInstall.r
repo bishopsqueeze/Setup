@@ -5,9 +5,10 @@ install.packages("ctv")
 library(ctv)
 
 ##-------------------------------------------------------------------
-## Some packages will only install via source; however, we need to have compilers installed. 
-## I followed the basic steps to install source packages, but I generally prefer to 
-## install binary packages instead.
+## Some packages will only install via source; however, we need to 
+## have compilers installed. I followed the basic steps to install 
+## source packages, but I generally prefer to install binary packages 
+## instead.
 ##-------------------------------------------------------------------
 
 ##-------------------------------------------------------------------
@@ -21,6 +22,7 @@ library(ctv)
 ##
 ##  3. Then I tried to install a package
 ##		- The initial attempt failed b/c I had to install the Xcode command line tools
+##		  so I installed them via the command line 'xcode-select --install'
 ##
 ##	4. Then I tried to install the High Performance Computing package
 ##		- ctv::install.views("HighPerformanceComputing")
@@ -43,23 +45,27 @@ library(ctv)
 ##			- ‘pbdDEMO’ (error)
 ##			- ‘pbdDMAT’ (error)
 ##			- ‘pmclust’ (error			## model-based clustering (unsupervised) for high dimensional and ultra large data
+##
+##	7. At this point, most of the source installs I would not likely use, so 
+##	   I just installed the non-source versions and skipped compiles as a rule
+##-------------------------------------------------------------------
 
 ##-------------------------------------------------------------------
 ## Views Installed
 ##-------------------------------------------------------------------
-##ctv::install.views("HighPerformanceComputing")
-##ctv::install.views("Bayesian")				##	Failed compiles: RGtk2, cairoDevice, cudaBayesreg, gWidgetsRGtk2, AtelieR
-##ctv::install.views("Cluster")					## binaries only
-##ctv::install.views("Distributions")			## binaries only
+ctv::install.views("HighPerformanceComputing")
+ctv::install.views("Bayesian")					## Failed compiles: RGtk2, cairoDevice, cudaBayesreg, gWidgetsRGtk2, AtelieR
+ctv::install.views("Cluster")					## binaries only
+ctv::install.views("Distributions")				## binaries only
 ctv::install.views("Econometrics")
 ctv::install.views("ExperimentalDesign")
 ctv::install.views("ExtremeValue")
 ctv::install.views("Finance")
 ctv::install.views("Graphics")
 ctv::install.views("MachineLearning")			## binaries only
-ctv::install.views("Multivariate")			## binaries only
+ctv::install.views("Multivariate")				## binaries only
 ctv::install.views("NumericalMathematics")
-ctv::install.views("Survival")				## binaries only
+ctv::install.views("Survival")					## binaries only
 ctv::install.views("TimeSeries")
 ctv::install.views("WebTechnologies")
 
