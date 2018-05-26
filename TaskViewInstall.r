@@ -62,3 +62,59 @@ ctv::install.views("NumericalMathematics")
 ctv::install.views("Survival")				## binaries only
 ctv::install.views("TimeSeries")
 ctv::install.views("WebTechnologies")
+
+
+##-------------------------------------------------------------------
+## Python install
+##-------------------------------------------------------------------
+
+## Use the following guide.  It is a little clunky though
+##	http://docs.python-guide.org/en/latest/starting/install3/osx/
+
+## install homebrew
+ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+## modify the path to ensure /usr/local directories are first in the search list
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+
+## I edited the /etc/paths file
+/usr/local/bin
+/usr/local/sbin
+/usr/bin
+/bin
+/usr/sbin
+/sbin
+
+## Use homebew to install python3
+brew install python
+
+## The install echoed the following
+python has been installed as 
+	/usr/local/bin/python3
+
+Unversioned symlinks `python`, `python-config`, `pip` etc. pointing to `python3`, `python3-config`, `pip3` etc., 
+respectively, have been installed into
+	/usr/local/opt/python/libexec/bin
+
+If you need Homebrews Python 2.7 run
+	brew install python@2
+
+Pip, setuptools, and wheel have been installed. To update them run
+	pip3 install --upgrade pip setuptools wheel
+
+You can install Python packages with
+	pip3 install <package>
+They will install into the site-package directory
+	/usr/local/lib/python3.6/site-packages
+
+See: https://docs.brew.sh/Homebrew-and-Python
+
+
+## To take advantage of the above symlinks I edited the .bash_profile to include
+export PATH=/usr/local/opt/python/libexec/bin:$PATH:/Users/alexstephens/Library/Python/3.6/bin
+
+
+##
+
+## add this to the .bash_profile $PATH variable: /Users/alexstephens/Library/Python/3.6/bin
+
