@@ -17,7 +17,7 @@ library(ctv)
 ##		- Installed the clang package (6.0.0) from that site
 ##
 ##	2. Since there was a later version of gFortran on (https://gcc.gnu.org/wiki/GFortranBinaries) I 
-##	   installed the gfortran-6.3-Sierra.dmg instead
+##	   installed the gfortran-6.3-Sierra.dmg instead 
 ##
 ##  3. Then I tried to install a package
 ##		- The initial attempt failed b/c I had to install the Xcode command line tools
