@@ -1,8 +1,72 @@
 ##-------------------------------------------------------------------
-## install the TaskView Library
+## Clean install
 ##-------------------------------------------------------------------
-install.packages("ctv")
-library(ctv)
+
+## [1] Wipe the disk and install a clean mac OS
+
+
+## [2] Install basic apps
+##		- Firefox
+##		- Github Desktop Application
+##		- CodeRunner
+
+## [3] Install Xcode command line tools via "xcode-select --install"
+
+
+## [4] Install compilers to allow us to build R packages from source
+##		- Go to: http://hpc.sourceforge.net/
+##		- Get the latest build (gcc-8.1-bin.tar.gz as of 05/28/18)
+## 		- Install 
+##			gunzip gcc-8.1-bin.tar.gz
+## 			sudo tar -xvf gcc-8.1-bin.tar -C /.
+## 		- It installs everything in /usr/local
+
+## [5] Confirm install of gfortran & gcc
+
+	qp:Downloads alexstephens$ gfortran --version
+	GNU Fortran (GCC) 8.1.0
+	Copyright (C) 2018 Free Software Foundation, Inc.
+	This is free software; see the source for copying conditions.  There is NO
+	warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+	qp:Downloads alexstephens$ gcc --version
+	gcc (GCC) 8.1.0
+	Copyright (C) 2018 Free Software Foundation, Inc.
+	This is free software; see the source for copying conditions.  There is NO
+	warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+## [6] Install R & reboot
+
+## [7] Install TaskView Library
+	install.packages("ctv")
+	library(ctv)
+
+## [8] Attempt to install views (only use binaries)
+ctv::install.views("HighPerformanceComputing")
+
+ctv::install.views("Bayesian")					## Failed compiles: RGtk2, cairoDevice, cudaBayesreg, gWidgetsRGtk2, AtelieR
+ctv::install.views("Cluster")					## binaries only
+ctv::install.views("Distributions")				## binaries only
+ctv::install.views("Econometrics")
+ctv::install.views("ExperimentalDesign")
+ctv::install.views("ExtremeValue")
+ctv::install.views("Finance")
+ctv::install.views("Graphics")
+ctv::install.views("MachineLearning")			## binaries only
+ctv::install.views("Multivariate")				## binaries only
+ctv::install.views("NumericalMathematics")
+ctv::install.views("Survival")					## binaries only
+ctv::install.views("TimeSeries")
+ctv::install.views("WebTechnologies")
+
+## [9] Test a compile of a source binary
+install.packages("OpenCL")
+
+
+
+
+
 
 ##-------------------------------------------------------------------
 ## Some packages will only install via source; however, we need to 
