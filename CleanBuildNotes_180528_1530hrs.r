@@ -38,13 +38,13 @@
 ## Clean install of R
 ##-------------------------------------------------------------------
 
-## [6] Install R & reboot
+## [1] Install R & reboot
 
-## [7] Install TaskView Library
+## [2] Install TaskView Library
 	install.packages("ctv")
 	library(ctv)
 
-## [8] Attempt to install views (only use binaries)
+## [3] Attempt to install views (only use binaries)
 	ctv::install.views("HighPerformanceComputing")
 
 		## attempt to install Rmpi after this error message
@@ -61,7 +61,7 @@
 			
 			## try to install Rmpi ... worked!
 		
-## [9] (again) Attempt to install views (only use binaries)
+## [4] (again) Attempt to install views (only use binaries)
 	ctv::install.views("HighPerformanceComputing")
 	ctv::install.views("Bayesian")					## cairoDevice, gWidgetsRGtk2, AtelieR not installed
 	ctv::install.views("Cluster")					## clusterfly not installed	
@@ -83,6 +83,10 @@
 		## so the install failed
 		  dlopen(/Library/Frameworks/R.framework/Versions/3.5/Resources/library/rJava/libs/rJava.so, 
 			6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-9.jdk/Contents/Home/lib/server/libjvm.dylib
+			
+		## Because of this issue, I removed java using the following methods:
+			https://docs.oracle.com/javase/8/docs/technotes/guides/install/mac_jdk.html#A1096903
+			http://osxdaily.com/2017/06/16/uninstall-java-mac/
 	
 	ctv::install.views("Multivariate")	
 	ctv::install.views("NumericalMathematics")
@@ -90,7 +94,7 @@
 	ctv::install.views("TimeSeries")
 
 
-## [10] Insatlling some of the troublesome packages
+## [5] Insatlling some of the troublesome packages
 
 	## attempted to install RGtk2
 		install.packages("RGtk2")
@@ -169,124 +173,10 @@
 ## [3] This worked.  I was able to execute python commands from the app
 
 
-
-
-
-
 ##-------------------------------------------------------------------
-## Notes from previous build attempts
+## Rstudio install
 ##-------------------------------------------------------------------
 
-##-------------------------------------------------------------------
-## Steps Taken
-##-------------------------------------------------------------------
-##	1. Install the binary compilers housed on the CRAN site (https://cran.r-project.org/bin/macosx/tools/)
-##		- Installed the clang package (6.0.0) from that site
-##
-##	2. Since there was a later version of gFortran on (https://gcc.gnu.org/wiki/GFortranBinaries) I 
-##	   installed the gfortran-6.3-Sierra.dmg instead 
-##
-##  3. Then I tried to install a package
-##		- The initial attempt failed b/c I had to install the Xcode command line tools
-##		  so I installed them via the command line 'xcode-select --install'
-##
-##	4. Then I tried to install the High Performance Computing package
-##		- ctv::install.views("HighPerformanceComputing")
-##		- There were several packages that I had to install via source.  Some worked, some failed.
-##			- E.g., install.packages("OpenCL") would install
-##			- But other packages like install.packages("Rhpc") would fail do to a missing mpi.h header
-##
-##	5. Then I installed other compilers to get OpenMPI to install
-##		- install latest gcc libraries (http://hpc.sourceforge.net/; gcc-7.1-bin.tar)
-##		- attempt to configure/make/make install OpenMPI
-##
-##	6. Try some of the source-only packaged
-##		- install.packages("Rmpi") == worked
-##		- install.packages("Rhpc") == failed (seems like there could be an issue in RhpcMPIapaplyLB.h)
-##		- Others that failed
-##			- ‘cudaBayesreg’ (error)	## GPU platform for the analysis of brain fMRI data
-##			- ‘permGPU’ (error)			## For permutation resampling inference in the context of RNA microarray studies
-##			- ‘Rhpc’ (error)			## Function of apply style using 'MPI' provides better 'HPC' environment on R
-##			- ‘pbdBASE’ (error)			## An interface to and extensions for the 'PBLAS' and 'ScaLAPACK' numerical libraries
-##			- ‘pbdDEMO’ (error)
-##			- ‘pbdDMAT’ (error)
-##			- ‘pmclust’ (error			## model-based clustering (unsupervised) for high dimensional and ultra large data
-##
-##	7. At this point, most of the source installs I would not likely use, so 
-##	   I just installed the non-source versions and skipped compiles as a rule
-##-------------------------------------------------------------------
+## [1] Installed RStudio-1.1.453.dmg
 
-##-------------------------------------------------------------------
-## Views Installed
-##-------------------------------------------------------------------
-ctv::install.views("HighPerformanceComputing")
-ctv::install.views("Bayesian")					## Failed compiles: RGtk2, cairoDevice, cudaBayesreg, gWidgetsRGtk2, AtelieR
-ctv::install.views("Cluster")					## binaries only
-ctv::install.views("Distributions")				## binaries only
-ctv::install.views("Econometrics")
-ctv::install.views("ExperimentalDesign")
-ctv::install.views("ExtremeValue")
-ctv::install.views("Finance")
-ctv::install.views("Graphics")
-ctv::install.views("MachineLearning")			## binaries only
-ctv::install.views("Multivariate")				## binaries only
-ctv::install.views("NumericalMathematics")
-ctv::install.views("Survival")					## binaries only
-ctv::install.views("TimeSeries")
-ctv::install.views("WebTechnologies")
-
-
-##-------------------------------------------------------------------
-## Python install
-##-------------------------------------------------------------------
-
-## Use the following guide.  It is a little clunky though
-##	http://docs.python-guide.org/en/latest/starting/install3/osx/
-
-## install homebrew
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-## modify the path to ensure /usr/local directories are first in the search list
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-
-## I edited the /etc/paths file
-/usr/local/bin
-/usr/local/sbin
-/usr/bin
-/bin
-/usr/sbin
-/sbin
-
-## Use homebew to install python3
-brew install python
-
-## The install echoed the following
-python has been installed as 
-	/usr/local/bin/python3
-
-Unversioned symlinks `python`, `python-config`, `pip` etc. pointing to `python3`, `python3-config`, `pip3` etc., 
-respectively, have been installed into
-	/usr/local/opt/python/libexec/bin
-
-If you need Homebrews Python 2.7 run
-	brew install python@2
-
-Pip, setuptools, and wheel have been installed. To update them run
-	pip3 install --upgrade pip setuptools wheel
-
-You can install Python packages with
-	pip3 install <package>
-They will install into the site-package directory
-	/usr/local/lib/python3.6/site-packages
-
-See: https://docs.brew.sh/Homebrew-and-Python
-
-
-## To take advantage of the above symlinks I edited the .bash_profile to include
-export PATH=/usr/local/opt/python/libexec/bin:$PATH:/Users/alexstephens/Library/Python/3.6/bin
-
-
-##
-
-## add this to the .bash_profile $PATH variable: /Users/alexstephens/Library/Python/3.6/bin
 
