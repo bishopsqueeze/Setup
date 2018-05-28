@@ -90,24 +90,44 @@
 	ctv::install.views("TimeSeries")
 
 
+## [10] Insatlling some of the troublesome packages
+
+	## attempted to install RGtk2
+		install.packages("RGtk2")
+		configure: error: GTK version 2.8.0 required
+		
+	## install the GTK+ package GTK_2.24.17-X11.pkg from https://r.research.att.com/
+	## (now try the above again ... fail)
+	
+	## see also https://stackoverflow.com/questions/44013379/installing-rgtk2-on-macos-sierra-version-10-12-4-and-r-version-3-4-0
+		
+	## Attempting to follow those instructions, but I faile running "R CMD INSTALL ~/Downloads/cairoDevice_2.24.tar.gz"
+	## it says there is no 'pkg-config'
+	
+	## So, install via brew
+		brew install pkg-config
+
+	## I'm not certain of the value of these packages given that they seem to be 
+	## specialized graphics / GTK-based tools, so I'll abandon this for now.
+
+
 ##-------------------------------------------------------------------
 ## Clean install of Python
 ##-------------------------------------------------------------------
 
-## [] Follow the instructions on this website
+## [1] Follow the instructions on this website
 	
 	http://docs.python-guide.org/en/latest/starting/install3/osx/
 	
-## [] Install homebrew (package manager for mac os)
+## [2] Install homebrew (package manager for mac os)
 	
 	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	
-## [] Edit /etc/paths to include /usr/local/sbin in the search patch
+## [3] Edit /etc/paths to include /usr/local/sbin in the search patch
 	
 	See:  https://www.architectryan.com/2012/10/02/add-to-the-path-on-mac-os-x-mountain-lion/
 
 ## Install python via "% brew install python"
-
 
 	Python has been installed as
 		/usr/local/bin/python3
@@ -131,7 +151,7 @@
 	See: https://docs.brew.sh/Homebrew-and-Python
 	
 	
-## Add the above path to the python simlink to enable links to python / pip
+## [4] Add the above path to the python simlink to enable links to python / pip
 	
 	export PATH=/usr/local/opt/python/libexec/bin:$PATH
 	
