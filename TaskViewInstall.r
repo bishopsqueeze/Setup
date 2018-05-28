@@ -1,9 +1,8 @@
 ##-------------------------------------------------------------------
-## Clean install
+## Clean install of OS
 ##-------------------------------------------------------------------
 
 ## [1] Wipe the disk and install a clean mac OS
-
 
 ## [2] Install basic apps
 ##		- Firefox
@@ -35,6 +34,9 @@
 	This is free software; see the source for copying conditions.  There is NO
 	warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
+##-------------------------------------------------------------------
+## Clean install of R
+##-------------------------------------------------------------------
 
 ## [6] Install R & reboot
 
@@ -44,6 +46,24 @@
 
 ## [8] Attempt to install views (only use binaries)
 ctv::install.views("HighPerformanceComputing")
+
+	## attempt to install Rmpi after this error message
+	ERROR: dependency ‘Rmpi’ is not available for package ‘doMPI’
+	* removing ‘/Library/Frameworks/R.framework/Versions/3.5/Resources/library/doMPI’
+
+		## attempt to install Rmpi from source
+		install.packages("Rmpi")
+		configure: error: "Cannot find mpi.h header file"
+
+		## follow instructions on the following website to download
+		## and install OpenMPI (Message Passing Interface)
+		https://wiki.helsinki.fi/display/HUGG/Open+MPI+install+on+Mac+OS+X
+		
+		
+		
+
+
+
 
 ctv::install.views("Bayesian")					## Failed compiles: RGtk2, cairoDevice, cudaBayesreg, gWidgetsRGtk2, AtelieR
 ctv::install.views("Cluster")					## binaries only
