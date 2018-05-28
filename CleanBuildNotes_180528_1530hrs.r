@@ -83,7 +83,6 @@
 		## so the install failed
 		  dlopen(/Library/Frameworks/R.framework/Versions/3.5/Resources/library/rJava/libs/rJava.so, 
 			6): Library not loaded: /Library/Java/JavaVirtualMachines/jdk-9.jdk/Contents/Home/lib/server/libjvm.dylib
-		
 	
 	ctv::install.views("Multivariate")	
 	ctv::install.views("NumericalMathematics")
@@ -136,6 +135,20 @@
 	
 	export PATH=/usr/local/opt/python/libexec/bin:$PATH
 	
+
+##-------------------------------------------------------------------
+## Clean install of CodeRunner
+##-------------------------------------------------------------------
+
+## [1] I installed a version of CodeRunner from the App Store, when I 
+## tried to run a python script from the application, it said that I
+## would need to download the non-app-store version. 
+
+## [2] Install the non-app-store version (CodeRunner-2.3.zip)
+
+## [3] This worked.  I was able to execute python commands from the app
+
+
 
 
 
