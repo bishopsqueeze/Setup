@@ -325,5 +325,13 @@ Error: package or namespace load failed for ‘rjags’:
 	Loading module: basemod: ok
 	Loading module: bugs: ok
 
+	## [8] Now load "rjags" in R (ok)
+	
+	> library(rjags)
+	Loading required package: coda
+	Linked to JAGS 4.3.0
+	Loaded modules: basemod,bugs
+	
+	
 
 
