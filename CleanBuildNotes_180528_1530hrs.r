@@ -180,3 +180,120 @@
 ## [1] Installed RStudio-1.1.453.dmg
 
 
+##-------------------------------------------------------------------
+## Issues with JAGS
+##-------------------------------------------------------------------
+
+## [1] Tried to run the installed 'rjags' library in R, but got the 
+## following error message
+
+Error: package or namespace load failed for ‘rjags’:
+ .onLoad failed in loadNamespace() for 'rjags', details:
+	call: dyn.load(file, DLLpath = DLLpath, ...)
+	error: unable to load shared object '/Library/Frameworks/R.framework/Versions/3.5/Resources/library/rjags/libs/rjags.so':
+	dlopen(/Library/Frameworks/R.framework/Versions/3.5/Resources/library/rjags/libs/rjags.so, 10): Library not loaded: /usr/local/lib/libjags.4.dylib
+	Referenced from: /Library/Frameworks/R.framework/Versions/3.5/Resources/library/rjags/libs/rjags.so
+	Reason: image not found
+	
+	
+## [2] One source to help trouble-shoot the issue 
+## 		- https://gist.github.com/casallas/8411082
+##		- Which suggests doing
+	brew install jags
+	
+## [3] Ok, this appears to work, but there were several issues with the brew 
+## install itself 
+	
+	==> Pouring gmp-6.1.2_2.high_sierra.bottle.tar.gz
+	Error: The `brew link` step did not complete successfully
+	The formula built, but is not symlinked into /usr/local
+	Could not symlink include/gmp.h
+	Target /usr/local/include/gmp.h
+	already exists. You may want to remove it:
+		rm '/usr/local/include/gmp.h'
+
+	To force the link and overwrite all conflicting files:
+		brew link --overwrite gmp
+
+	To list all files that would be deleted:
+		brew link --overwrite --dry-run gmp
+
+		Possible conflicting files are:
+		/usr/local/include/gmp.h
+		/usr/local/include/gmpxx.h
+		/usr/local/lib/libgmp.10.dylib
+		/usr/local/lib/libgmp.a
+		/usr/local/lib/libgmp.dylib -> /usr/local/lib/libgmp.10.dylib
+		/usr/local/lib/libgmpxx.4.dylib
+		/usr/local/lib/libgmpxx.a
+		/usr/local/lib/libgmpxx.dylib -> /usr/local/lib/libgmpxx.4.dylib
+		
+
+		==> Pouring mpfr-4.0.1.high_sierra.bottle.tar.gz
+		Error: The `brew link` step did not complete successfully
+		The formula built, but is not symlinked into /usr/local
+		Could not symlink include/mpf2mpfr.h
+		Target /usr/local/include/mpf2mpfr.h
+		already exists. You may want to remove it:
+			rm '/usr/local/include/mpf2mpfr.h'
+
+		To force the link and overwrite all conflicting files:
+			brew link --overwrite mpfr
+
+		To list all files that would be deleted:
+			brew link --overwrite --dry-run mpfr
+
+		Possible conflicting files are:
+		/usr/local/include/mpf2mpfr.h
+		/usr/local/include/mpfr.h
+		/usr/local/lib/libmpfr.a
+		/usr/local/lib/libmpfr.dylib -> /usr/local/lib/libmpfr.4.dylib
+		
+		
+		==> Pouring libmpc-1.1.0.high_sierra.bottle.tar.gz
+		Error: The `brew link` step did not complete successfully
+		The formula built, but is not symlinked into /usr/local
+		Could not symlink include/mpc.h
+		Target /usr/local/include/mpc.h
+		already exists. You may want to remove it:
+			rm '/usr/local/include/mpc.h'
+
+		To force the link and overwrite all conflicting files:
+			brew link --overwrite libmpc
+
+		To list all files that would be deleted:
+			brew link --overwrite --dry-run libmpc
+
+		Possible conflicting files are:
+		/usr/local/include/mpc.h
+		/usr/local/lib/libmpc.3.dylib
+		/usr/local/lib/libmpc.a
+		/usr/local/lib/libmpc.dylib -> /usr/local/lib/libmpc.3.dylib
+		
+		
+		## Most troubling
+		==> Pouring gcc-8.1.0.high_sierra.bottle.1.tar.gz
+		Error: The `brew link` step did not complete successfully
+		The formula built, but is not symlinked into /usr/local
+		Could not symlink bin/gfortran
+		Target /usr/local/bin/gfortran
+		already exists. You may want to remove it:
+			rm '/usr/local/bin/gfortran'
+
+		To force the link and overwrite all conflicting files:
+			brew link --overwrite gcc
+
+		To list all files that would be deleted:
+			brew link --overwrite --dry-run gcc
+
+	
+
+	==> Pouring jags-4.3.0_2.high_sierra.bottle.tar.gz
+	Warning: jags dependency gcc was built with a different C++ standard
+	library (libstdc++ from clang). This may cause problems at runtime.
+	🍺  /usr/local/Cellar/jags/4.3.0_2
+
+	## [4] Source the DBDA2E-utilities 
+
+
+
