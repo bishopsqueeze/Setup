@@ -293,7 +293,37 @@ Error: package or namespace load failed for ‘rjags’:
 	library (libstdc++ from clang). This may cause problems at runtime.
 	🍺  /usr/local/Cellar/jags/4.3.0_2
 
-	## [4] Source the DBDA2E-utilities 
+	## [4] Source the DBDA2E-utilities -- worked ... but not sure if it
+	## "really" works
+	
+	## [5] attempt to run jags from the command line
+	
+	db:~ alexstephens$ jags 
+	dyld: Library not loaded: /usr/local/opt/libtool/lib/libltdl.7.dylib
+		Referenced from: /usr/local/Cellar/jags/4.3.0_2/libexec/jags-terminal
+		Reason: image not found
+	Abort trap: 6
+	
+	## [6] Try to install libtool via homebrew
+	
+	db:Cellar alexstephens$ brew install libtool --universal
+	Warning: libtool: this formula has no --universal option so it will be ignored!
+	==> Downloading https://homebrew.bintray.com/bottles/libtool-2.4.6_1.high_sierra.bottle.tar.gz
+	######################################################################## 100.0%
+	==> Pouring libtool-2.4.6_1.high_sierra.bottle.tar.gz
+	==> Caveats
+	In order to prevent conflicts with Apples own libtool we have prepended a "g"
+	so, you have instead: glibtool and glibtoolize.
+	==> Summary
+	🍺  /usr/local/Cellar/libtool/2.4.6_1: 71 files
+	
+	## [7] Now try to run jags from the command link (ok)
+	
+	db:Cellar alexstephens$ jags
+	Welcome to JAGS 4.3.0 on Sun Jun  3 22:10:15 2018
+	JAGS is free software and comes with ABSOLUTELY NO WARRANTY
+	Loading module: basemod: ok
+	Loading module: bugs: ok
 
 
 
